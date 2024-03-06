@@ -4,15 +4,21 @@ def exit_program(gpt_api: OpenAIAPI) -> None:
     exit()
 
 def set_custom(gpt_api: OpenAIAPI) -> None:
-    custom_instruction = input('Enter custom instruction > ')
+    print('Enter custom instruction')
+    custom_instruction = input('> ')
     gpt_api.set_custom_instruction(custom_instruction)
+
+def help(gpt_api: OpenAIAPI) -> None:
+    for command in COMMANDS:
+        print(f'- /{command}')
 
 COMMANDS = {
     'exit': exit_program,
-    'setcustom': set_custom
+    'setcustom': set_custom,
+    'help': help
 }
 
-def main():
+def main() -> None:
     gpt_api = OpenAIAPI()
     while True:
         user_input = input('> ')
@@ -21,7 +27,7 @@ def main():
         if user_input[:1] == '/':
             command = user_input[1:]
             if command not in COMMANDS:
-                print('Invalid command!')
+                print('Invalid command! (Check commands using /help)')
             else:
                 COMMANDS[command](gpt_api)
             continue
