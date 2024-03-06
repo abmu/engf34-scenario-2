@@ -2,12 +2,14 @@ from openai import OpenAI
 import os
 from dotenv import load_dotenv
 
+
 class OpenAIAPI:
     def __init__(self, api_key: str=None) -> None:
         if api_key is None:
             load_dotenv()
             api_key = os.getenv('OPENAI_KEY')
-        self._client = OpenAI(api_key=api_key)
+        
+        self._client: OpenAI = OpenAI(api_key=api_key)
         self._custom_instruction: str = None
 
     def set_custom_instruction(self, instruction: str) -> None:

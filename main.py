@@ -4,7 +4,7 @@ def exit_program(gpt_api: OpenAIAPI) -> None:
     exit()
 
 def set_custom(gpt_api: OpenAIAPI) -> None:
-    print('Enter custom instruction')
+    print('Enter custom instruction (This is added before each prompt)')
     custom_instruction = input('> ')
     gpt_api.set_custom_instruction(custom_instruction)
 
