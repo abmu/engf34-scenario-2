@@ -24,6 +24,6 @@ gpt_api = OpenAIAPI()
 instruction = 'Start your sentence with "Hello there!"'
 gpt_api.set_custom_instruction(instruction)
 
-response = gpt_api.get_response(user_input)
+response = gpt_api.get_response('How are you?')
 print(f'gpt-3.5-turbo: {response}')
 ```
